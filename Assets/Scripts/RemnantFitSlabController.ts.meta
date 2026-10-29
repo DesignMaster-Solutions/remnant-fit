@@ -30,6 +30,7 @@
   ScriptInputsHidden:
     boxMeshSizeCm: false
     debugColliders: false
+    hoverTint: false
     thicknessCm: false
     visual: false
   ScriptTypesHidden:
@@ -44,6 +45,7 @@
     - visual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       thicknessCm: !<float> 3.000000
       boxMeshSizeCm: !<float> 1.000000
+      hoverTint: !<Vec4> {x: 0.720000, y: 0.860000, z: 1.000000, w: 1.000000}
       debugColliders: false
   ScriptTypes:
     -
@@ -57,6 +59,7 @@
     - '// @ui {"widget":"group_start", "label":"Settings"}'
     - '// @input float thicknessCm = 3 {"hint":"Slab thickness (cm); the brief asks for 3 cm", "widget":"slider", "min":1, "max":6, "step":0.5}'
     - '// @input float boxMeshSizeCm = 1 {"hint":"Box mesh edge length at scale 1 (cm) — BoxMeshPreset is a 1 cm cube"}'
+    - '// @input vec4 hoverTint = "{0.72, 0.86, 1, 1}" {"hint":"Tint mixed into the stone while the slab is aimed at (hover highlight)", "widget":"color"}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"group_start", "label":"Debug"}'
     - '// @input bool debugColliders {"hint":"Draw the slab collider wireframe"}'

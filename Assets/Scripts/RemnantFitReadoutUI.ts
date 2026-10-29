@@ -47,11 +47,11 @@ export class RemnantFitReadoutUI extends BaseScriptComponent {
     const bb = this.sceneObject.createComponent(Billboard.getTypeName()) as Billboard
     bb.xAxisEnabled = true
     const d = this.viewDistanceCm
-    const content = backPlateColumn(this.sceneObject, 36, 1.0, 1.4)
-    this.titleText = addText(content, "RemnantTitle", "River White Granite", "Caption", 32, 2.0, d,
+    const content = backPlateColumn(this.sceneObject, 44, 1.0, 1.4)
+    this.titleText = addText(content, "RemnantTitle", "River White Granite", "Body", 32, 2.2, d,
       new vec4(1, 1, 1, 0.7))
-    this.statusText = addText(content, "FitStatus", "Covers 100% · 18 cm left for backsplash", "Subheadline",
-      34, 2.6, d, this.coversColor)
+    this.statusText = addText(content, "FitStatus", "Covers 100% · 18 cm left for backsplash", "Headline2",
+      40, 3.0, d, this.coversColor)
     const row = flexBox(content, "Actions", FlexDirection.Row, 33, 4.6, 1.5)
     const rotate: Button = addIconButton(row, "RotateButton", "Rotate", ICON_ROTATE, 14, 4.6, d)
     const change: Button = addIconButton(row, "ChangeRemnantButton", "Change remnant", ICON_SWAP, 17, 3.4, d)

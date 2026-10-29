@@ -1081,6 +1081,7 @@
   ScriptInputsDefault:
     thicknessCm: true
     boxMeshSizeCm: true
+    hoverTint: true
     debugColliders: true
   ScriptTypesDefault:
     {}
@@ -1089,6 +1090,7 @@
       visual: !<reference.SceneObject> db8f16f3-97d0-4981-84f4-d4b147f3c9cb
       thicknessCm: !<float> 3.000000
       boxMeshSizeCm: !<float> 1.000000
+      hoverTint: !<Vec4> {x: 0.720000, y: 0.860000, z: 1.000000, w: 1.000000}
       debugColliders: false
   ScriptTypes:
     "":

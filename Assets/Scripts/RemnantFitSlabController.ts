@@ -28,6 +28,10 @@ export class RemnantFitSlabController extends BaseScriptComponent {
   @input
   @hint("Box mesh edge length at scale 1 (cm) — BoxMeshPreset is a 1 cm cube")
   boxMeshSizeCm: number = 1
+  @input("vec4", "{0.72, 0.86, 1, 1}")
+  @hint("Tint mixed into the stone while the slab is aimed at (hover highlight)")
+  @widget(new ColorWidget())
+  hoverTint: vec4 = new vec4(0.72, 0.86, 1, 1)
   @ui.group_end
   @ui.group_start("Debug")
   @input
@@ -49,6 +53,7 @@ export class RemnantFitSlabController extends BaseScriptComponent {
   private material!: Material
   private last = new vec3(0, 0, 0)
   private yaw = 0
+  private stoneColor = new vec4(1, 1, 1, 1)
 
   onAwake() {
     if (isNull(this.visual)) {
@@ -63,11 +68,16 @@ export class RemnantFitSlabController extends BaseScriptComponent {
     this.shape = Shape.createBoxShape()
     this.collider.shape = this.shape
     this.collider.debugDrawEnabled = this.debugColliders
-    this.sceneObject.createComponent(Interactable.getTypeName())
+    const interactable = this.sceneObject.createComponent(Interactable.getTypeName()) as Interactable
     this.manipulation = this.sceneObject.createComponent(InteractableManipulation.getTypeName()) as InteractableManipulation
     this.manipulation.setCanRotate(false)
     this.manipulation.setCanScale(false)
     this.manipulation.enableYTranslation = false
+
+    this.createEvent("OnStartEvent").bind(() => {
+      interactable.onHoverEnter.add(() => this.setHover(true))
+      interactable.onHoverExit.add(() => this.setHover(false))
+    })
 
     // After SIK has written its drag position: keep the slab flat, on the top, and in range.
     this.createEvent("LateUpdateEvent").bind(() => this.seat())
@@ -81,7 +91,8 @@ export class RemnantFitSlabController extends BaseScriptComponent {
     this.limit = limit
     this.rotated = false
     this.yaw = 0
-    this.material.mainPass.baseColor = color
+    this.stoneColor = color
+    this.setHover(false)
     this.applySize()
     this.sceneObject.enabled = true
     this.sceneObject.getTransform().setWorldPosition(new vec3(x, surfaceY + this.thicknessCm / 2, z))
@@ -108,6 +119,14 @@ export class RemnantFitSlabController extends BaseScriptComponent {
   get footprint(): Footprint {
     const p = this.sceneObject.getTransform().getWorldPosition()
     return this.rotated ? footprint(p.x, p.z, this.depthCm, this.widthCm) : footprint(p.x, p.z, this.widthCm, this.depthCm)
+  }
+
+  /** Brief: targets highlight when aimed at — tint the stone while hovered. */
+  private setHover(on: boolean): void {
+    const c = this.stoneColor
+    this.material.mainPass.baseColor = on
+      ? new vec4((c.x + this.hoverTint.x) / 2, (c.y + this.hoverTint.y) / 2, (c.z + this.hoverTint.z) / 2, 1)
+      : c
   }
 
   private applySize(): void {
