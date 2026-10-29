@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/9b862a45-b48c-422a-89eb-6bd13ae3c699>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> cef7c0dc-59fa-4129-a013-206f74c9fd84
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> cef7c0dc-59fa-4129-a013-206f74c9fd84
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a86867ea-c91a-4b6a-b2ed-23e0a2503c8e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a86867ea-c91a-4b6a-b2ed-23e0a2503c8e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: fb03294b-847b-4672-bb7a-d8e61d268fdf
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonLabel: false
+    hintText: false
+    viewDistanceCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - hintText: "Stand-in cabinet: mark its top"
+      buttonLabel: Set top here
+      viewDistanceCm: !<float> 80.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">RemnantFitSetTopUI – \"Set top here\" prompt</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input string hintText = "Stand-in cabinet: mark its top" {"hint":"Hint line shown above the button"}'
+    - '// @input string buttonLabel = "Set top here" {"hint":"Button label"}'
+    - '// @input float viewDistanceCm = 80 {"hint":"Viewing distance used to scale text (cm)", "widget":"slider", "min":40, "max":200, "step":5}'
+    - '// @ui {"widget":"group_end"}'

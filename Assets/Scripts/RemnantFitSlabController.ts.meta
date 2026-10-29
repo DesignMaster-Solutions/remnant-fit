@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/9ca69cea-c0f0-4963-9323-93dc024da34d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f53ca6f4-94b9-4291-a631-1f9bf17d399a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f53ca6f4-94b9-4291-a631-1f9bf17d399a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 121594a6-eac6-4caa-8821-4e0e123302b6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/121594a6-eac6-4caa-8821-4e0e123302b6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: a2a8fdda-6275-4825-a783-f2b7e3123e36
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    boxMeshSizeCm: false
+    debugColliders: false
+    thicknessCm: false
+    visual: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - visual: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      thicknessCm: !<float> 3.000000
+      boxMeshSizeCm: !<float> 1.000000
+      debugColliders: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">RemnantFitSlabController – draggable slab</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input SceneObject visual {"hint":"Child SceneObject with the slab box RenderMeshVisual (scaled to the slab size)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float thicknessCm = 3 {"hint":"Slab thickness (cm); the brief asks for 3 cm", "widget":"slider", "min":1, "max":6, "step":0.5}'
+    - '// @input float boxMeshSizeCm = 1 {"hint":"Box mesh edge length at scale 1 (cm) — BoxMeshPreset is a 1 cm cube"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Debug"}'
+    - '// @input bool debugColliders {"hint":"Draw the slab collider wireframe"}'
+    - '// @ui {"widget":"group_end"}'

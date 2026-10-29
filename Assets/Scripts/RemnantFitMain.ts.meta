@@ -1,0 +1,85 @@
+- !<AssetImportMetadata/80a35ae2-d750-4933-966e-cfb3af32b1c5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 8a0dc395-a64d-4322-a442-15e48d8019e2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 8a0dc395-a64d-4322-a442-15e48d8019e2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 333f26fb-8f88-47ff-a907-6b52e90519f4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/333f26fb-8f88-47ff-a907-6b52e90519f4>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 1115b384-8d6b-468b-8193-dae4b38726ee
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    edgeBack: false
+    edgeFront: false
+    edgeLeft: false
+    edgeRight: false
+    pickerUI: false
+    readoutLiftCm: false
+    readoutUI: false
+    setTopUI: false
+    slab: false
+    topDepthCm: false
+    topSurface: false
+    topWidthCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - setTopUI: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      pickerUI: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      readoutUI: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      slab: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      topSurface: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      edgeLeft: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      edgeRight: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      edgeFront: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      edgeBack: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      topWidthCm: !<float> 91.000000
+      topDepthCm: !<float> 56.000000
+      readoutLiftCm: !<float> 10.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">RemnantFitMain – flow orchestration</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - "// @input AssignableType_1 setTopUI {\"hint\":\"'Set top here' prompt\"}"
+    - '// @input AssignableType_2 pickerUI {"hint":"Remnant picker cards"}'
+    - '// @input AssignableType_3 readoutUI {"hint":"Fit readout above the slab"}'
+    - '// @input AssignableType_4 slab {"hint":"Slab controller on the Slab SceneObject"}'
+    - '// @input SceneObject topSurface {"hint":"Empty anchor at the center of the cabinet top surface"}'
+    - "// @input SceneObject edgeLeft {\"hint\":\"Amber outline along the cabinet top's left edge\"}"
+    - '// @input SceneObject edgeRight {"hint":"Amber outline along the right edge"}'
+    - '// @input SceneObject edgeFront {"hint":"Amber outline along the front edge (user side)"}'
+    - '// @input SceneObject edgeBack {"hint":"Amber outline along the back edge"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float topWidthCm = 91 {"hint":"Cabinet top width, left to right (cm)"}'
+    - '// @input float topDepthCm = 56 {"hint":"Cabinet top depth, front to back (cm)"}'
+    - "// @input float readoutLiftCm = 10 {\"hint\":\"Gap between the slab and the readout's lower edge (cm)\", \"widget\":\"slider\", \"min\":0, \"max\":30, \"step\":1}"
+    - '// @ui {"widget":"group_end"}'

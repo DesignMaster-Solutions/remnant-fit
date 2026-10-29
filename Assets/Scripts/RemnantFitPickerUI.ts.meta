@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/6d915677-8357-4a57-a989-ef883e8bb859>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ce252726-752d-45ed-9fcd-1a71537c10d2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ce252726-752d-45ed-9fcd-1a71537c10d2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> fabab5ae-b2e1-4192-83b8-c08df2aa7a77
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/fabab5ae-b2e1-4192-83b8-c08df2aa7a77>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 85d3ab9f-97cf-4271-b135-f266d0a0a3e8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cardGapCm: false
+    cardHeightCm: false
+    cardWidthCm: false
+    secondaryColor: false
+    viewDistanceCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cardWidthCm: !<float> 25.000000
+      cardHeightCm: !<float> 19.000000
+      cardGapCm: 2.500000
+      viewDistanceCm: !<float> 140.000000
+      secondaryColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.600000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">RemnantFitPickerUI – remnant cards</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float cardWidthCm = 25 {"hint":"Card width (cm); the brief asks for 25 cm", "widget":"slider", "min":15, "max":35, "step":0.5}'
+    - '// @input float cardHeightCm = 19 {"hint":"Card height (cm)", "widget":"slider", "min":10, "max":30, "step":0.5}'
+    - '// @input float cardGapCm = 2.5 {"hint":"Gap between cards (cm)", "widget":"slider", "min":0, "max":8, "step":0.5}'
+    - '// @input float viewDistanceCm = 140 {"hint":"Viewing distance used to scale text (cm)", "widget":"slider", "min":60, "max":220, "step":5}'
+    - '// @input vec4 secondaryColor = "{1, 1, 1, 0.6}" {"hint":"Color of the secondary (size) lines", "widget":"color"}'
+    - '// @ui {"widget":"group_end"}'
