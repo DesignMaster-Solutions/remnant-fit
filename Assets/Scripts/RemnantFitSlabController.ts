@@ -1,11 +1,11 @@
 // RemnantFitSlabController — the remnant slab on the cabinet top. Owns the slab's size,
-// rotation and drag: SIK Interactable + InteractableManipulation (translation only), with the
-// slab re-seated flat on the top surface every frame. Emits onMoved when its footprint changes.
+// rotation and drag: SIK Interactable drag events slide it on the top plane (where the hand ray
+// meets the top), with the slab re-seated flat on the top surface every frame. Emits onMoved when its footprint changes.
 // @inputs: visual (child box, scaled to slab size — the root stays unit-scale and owns the
 // collider, Hard Rule 6). Must not touch UI or fit math.
 
 import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {InteractableManipulation} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
+import {Interactor} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor"
 import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
 import {footprint, Footprint} from "./RemnantFitFit"
 
@@ -49,11 +49,12 @@ export class RemnantFitSlabController extends BaseScriptComponent {
   private limit: Footprint = {minX: -1e4, maxX: 1e4, minZ: -1e4, maxZ: 1e4}
   private collider!: ColliderComponent
   private shape!: BoxShape
-  private manipulation!: InteractableManipulation
   private material!: Material
   private last = new vec3(0, 0, 0)
   private yaw = 0
   private stoneColor = new vec4(1, 1, 1, 1)
+  private dragFrom: vec3 | null = null // slab position at drag start
+  private hitFrom: vec3 | null = null // hand ray on the top plane at drag start
 
   onAwake() {
     if (isNull(this.visual)) {
@@ -69,17 +70,21 @@ export class RemnantFitSlabController extends BaseScriptComponent {
     this.collider.shape = this.shape
     this.collider.debugDrawEnabled = this.debugColliders
     const interactable = this.sceneObject.createComponent(Interactable.getTypeName()) as Interactable
-    this.manipulation = this.sceneObject.createComponent(InteractableManipulation.getTypeName()) as InteractableManipulation
-    this.manipulation.setCanRotate(false)
-    this.manipulation.setCanScale(false)
-    this.manipulation.enableYTranslation = false
 
     this.createEvent("OnStartEvent").bind(() => {
       interactable.onHoverEnter.add(() => this.setHover(true))
       interactable.onHoverExit.add(() => this.setHover(false))
+      // InteractableManipulation with Y locked drifted the slab ~45 cm in depth on a sideways
+      // drag; following the ray's hit on the top plane moves it exactly with the hand.
+      interactable.onDragStart.add((e) => {
+        this.hitFrom = this.rayOnTop(e.interactor)
+        this.dragFrom = this.sceneObject.getTransform().getWorldPosition()
+      })
+      interactable.onDragUpdate.add((e) => this.dragTo(e.interactor))
+      interactable.onDragEnd.add(() => { this.hitFrom = null; this.dragFrom = null })
     })
 
-    // After SIK has written its drag position: keep the slab flat, on the top, and in range.
+    // Keep the slab flat, on the top, and in range.
     this.createEvent("LateUpdateEvent").bind(() => this.seat())
   }
 
@@ -134,6 +139,23 @@ export class RemnantFitSlabController extends BaseScriptComponent {
     this.visual.getTransform().setLocalScale(new vec3(this.widthCm / s, this.thicknessCm / s, this.depthCm / s))
     this.shape.size = new vec3(this.widthCm, this.thicknessCm, this.depthCm)
     this.collider.shape = this.shape
+  }
+
+  /** Where the interactor's ray meets the horizontal plane of the slab; null if it can't. */
+  private rayOnTop(interactor: Interactor): vec3 | null {
+    const o = interactor.startPoint
+    const d = interactor.direction
+    if (!o || !d || Math.abs(d.y) < 1e-3) return null
+    const t = (this.surfaceY + this.thicknessCm - o.y) / d.y
+    return t > 0 ? o.add(d.uniformScale(t)) : null
+  }
+
+  private dragTo(interactor: Interactor): void {
+    const hit = this.rayOnTop(interactor)
+    if (!hit || !this.hitFrom || !this.dragFrom) return
+    const p = this.dragFrom.add(hit.sub(this.hitFrom))
+    this.sceneObject.getTransform().setWorldPosition(new vec3(p.x, this.dragFrom.y, p.z))
+    this.seat()
   }
 
   private seat(): void {
