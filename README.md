@@ -34,9 +34,9 @@ LEAF scenarios (`Assets/Tests/`, registered in `LeafIndex`, run in the Preview w
 | 4. Covers → green + cm left for backsplash; short → amber + names the short edge | `c4-readout-cover-and-short` | PASS |
 | 5. "Rotate" turns the slab 90 degrees and the readout updates | `c5-rotate-updates-readout` | PASS |
 
-All five done criteria have a test and all five pass.
+All five done criteria have a test and all five pass. The tests were also seen failing: with the readout text deliberately broken, `c4` failed with `Expected "Covers 100% · 10 cm left for backsplash" - Received "... left for splash"`, then passed again once restored.
 
-Found while recording the demo: SIK's `InteractableManipulation` with Y translation locked drifted the slab about 45 cm in depth on a purely sideways drag. `c3` now also checks that a sideways drag does not move the slab in depth; it failed (`Expected "< 5" - Received "48.5"`), then the slab was changed to follow the hand ray where it meets the plane of the top, and it passed, with `c1`-`c5` all green again. `demo-step` (in `Assets/Tests/`) is the LEAF driver that plays the flow up to a given step for the video captures. The tests were also seen failing: with the readout text deliberately broken, `c4` failed with `Expected "Covers 100% · 10 cm left for backsplash" - Received "... left for splash"`, then passed again once restored.
+Found while recording the demo: SIK's `InteractableManipulation` with Y translation locked drifted the slab about 45 cm in depth on a purely sideways drag. `c3` now also checks that a sideways drag does not move the slab in depth; it failed (`Expected "< 5" - Received "48.5"`), then the slab was changed to follow the hand ray where it meets the plane of the top, and it passed, with `c1`-`c5` all green again. `demo-step` (in `Assets/Tests/`) is the LEAF driver that plays the flow up to a given step for the video captures.
 
 Not covered by a test: the light-blue hover highlight on the slab, and reachability with the IK interactor (the cards sit 1.4 m away by design, so they are pinched with the far-field ray, not a direct poke).
 
