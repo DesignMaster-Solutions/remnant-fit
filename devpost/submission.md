@@ -17,6 +17,9 @@ Submitted 29/10/2026 21:09 BRT: https://devpost.com/software/remnant-fit (editab
 ### Inspiration
 We run Stone Project, a marketplace where countertop fabricators sell their remnants: the leftover pieces of quartz and granite from bigger jobs. Homeowners redoing a bathroom love remnants because they cost a fraction of a full slab, but every buyer asks the same question: will this piece cover my vanity top? Today that is a tape measure, numbers on paper and a drive to the yard to find out.
 
+### Who it's for
+Homeowners remodeling a bathroom who are about to buy a stone remnant, and the fabricators who sell remnants and lose time on buyers who drive to the yard only to find the piece is too small.
+
 ### What it does
 Remnant Fit puts the remnant on your vanity at real size.
 1. A stand-in vanity cabinet (91 x 56 cm top) stands in front of you. Press **Set top here** to mark its top.
@@ -26,7 +29,7 @@ Remnant Fit puts the remnant on your vanity at real size.
 5. **Rotate** turns the slab 90 degrees and the readout updates. **Change remnant** brings the cards back.
 
 ### How we built it
-- Planned with the Devpost Learn **plan-lens** skill pack: design brief, planning notes and five checkable done criteria are in the repo's `devpost/` folder.
+- Planned with the Devpost Learn **plan-lens** skill pack: design brief, planning notes and five checkable done criteria are in the repo's `devpost/` folder. The pack made us write those five done criteria before any code; each one became a LEAF scenario, so the agent and the tests aimed at the same target. Its design notes also flagged the additive display early, which is why the sample data has no black granite and the UI stays light.
 - Built by an AI coding agent through **CLAD** and the **Lens Studio MCP** on the SPECS Base Template (Lens Studio 5.24.1): TypeScript components, Spectacles Interaction Kit 2.0 for every interaction, UI Kit 2.0 for the cards, buttons and readout.
 - Everything in centimeters, the fit math in its own module, and only light colors: the SPECS display is additive, so a black granite would be invisible.
 - Every done criterion has a **LEAF** scenario that drives the Lens through SIK in the preview. All five pass. The demo video was captured from the Lens Studio preview with a LEAF driver that plays the flow step by step.
