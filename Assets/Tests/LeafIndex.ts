@@ -17,6 +17,6 @@ export class LeafIndex extends BaseScriptComponent {
     {id: "c3-drag-slab-stays-flat", typename: DragSlabStaysFlatScenario.getTypeName()},
     {id: "c4-readout-cover-and-short", typename: ReadoutCoverAndShortScenario.getTypeName()},
     {id: "c5-rotate-updates-readout", typename: RotateUpdatesReadoutScenario.getTypeName()},
-    {id: "demo-step", typename: DemoStepScenario.getTypeName(), parameters: {upTo: "6", dx: "-0.3", dz: "0"}},
+    {id: "demo-step", typename: DemoStepScenario.getTypeName(), parameters: {upTo: "6", dx: "-0.3", dz: "0", pause: "0"}},
   ]
 }
