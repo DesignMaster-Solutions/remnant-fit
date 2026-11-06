@@ -6,7 +6,7 @@ Submitted 29/10/2026 21:09 BRT: https://devpost.com/software/remnant-fit (editab
 
 **Elevator pitch (200 chars):** See if a stone remnant fits your vanity before you drive to the stone yard: a SPECS Lens that lays the real-size slab on the cabinet and tells you, in cm, where it covers and where it falls short.
 
-**Video:** https://youtu.be/koaLjpCnlvY
+**Video:** https://youtu.be/IVFBZonaXIg (2:01; replaced 06/11/2026, after the live review: demo in the first seconds, a 50 s uncut take in the Lens Studio preview, who it is for, LEAF tests)
 
 **Repo:** https://github.com/DesignMaster-Solutions/remnant-fit
 
@@ -32,7 +32,7 @@ Remnant Fit puts the remnant on your vanity at real size.
 - Planned with the Devpost Learn **plan-lens** skill pack: design brief, planning notes and five checkable done criteria are in the repo's `devpost/` folder. The pack made us write those five done criteria before any code; each one became a LEAF scenario, so the agent and the tests aimed at the same target. Its design notes also flagged the additive display early, which is why the sample data has no black granite and the UI stays light.
 - Built by an AI coding agent through **CLAD** and the **Lens Studio MCP** on the SPECS Base Template (Lens Studio 5.24.1): TypeScript components, Spectacles Interaction Kit 2.0 for every interaction, UI Kit 2.0 for the cards, buttons and readout.
 - Everything in centimeters, the fit math in its own module, and only light colors: the SPECS display is additive, so a black granite would be invisible.
-- Every done criterion has a **LEAF** scenario that drives the Lens through SIK in the preview. All five pass. The demo video was captured from the Lens Studio preview with a LEAF driver that plays the flow step by step.
+- Every done criterion has a **LEAF** scenario that drives the Lens through SIK in the preview. All five pass. The demo video is a continuous recording of the Lens Studio preview while a LEAF driver plays the flow, with a 50 s uncut take.
 
 ### Challenges we ran into
 Recording the demo found a real bug: SIK's InteractableManipulation with Y translation locked moved the slab about 45 cm in depth on a purely sideways drag. We made the drag test check depth first and watched it fail (48.5 cm), then made the slab follow the hand ray where it meets the plane of the top. The test passed and the other four stayed green.

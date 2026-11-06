@@ -2,7 +2,7 @@
 
 A Lens for SPECS that puts a real-size countertop remnant on your vanity, so you can see if it fits before you drive to the stone yard.
 
-**Demo video (2:45):** https://youtu.be/koaLjpCnlvY (the Lens running end to end in the Lens Studio preview; source and build script in `docs/video/`).
+**Demo video (2:01):** https://youtu.be/IVFBZonaXIg (a 50 s uncut take of the Lens in the Lens Studio preview, then the flow narrated and the LEAF tests; footage and build script in `docs/video/`).
 
 Built for [Learn AR with SPECS](https://learn-specs.devpost.com/) by Design Master Solutions LLC, the team behind Stone Project (Remnant Finder), a marketplace for fabricators' stone remnants.
 
@@ -36,7 +36,7 @@ LEAF scenarios (`Assets/Tests/`, registered in `LeafIndex`, run in the Preview w
 
 All five done criteria have a test and all five pass. The tests were also seen failing: with the readout text deliberately broken, `c4` failed with `Expected "Covers 100% · 10 cm left for backsplash" - Received "... left for splash"`, then passed again once restored.
 
-Found while recording the demo: SIK's `InteractableManipulation` with Y translation locked drifted the slab about 45 cm in depth on a purely sideways drag. `c3` now also checks that a sideways drag does not move the slab in depth; it failed (`Expected "< 5" - Received "48.5"`), then the slab was changed to follow the hand ray where it meets the plane of the top, and it passed, with `c1`-`c5` all green again. `demo-step` (in `Assets/Tests/`) is the LEAF driver that plays the flow up to a given step for the video captures.
+Found while recording the demo: SIK's `InteractableManipulation` with Y translation locked drifted the slab about 45 cm in depth on a purely sideways drag. `c3` now also checks that a sideways drag does not move the slab in depth; it failed (`Expected "< 5" - Received "48.5"`), then the slab was changed to follow the hand ray where it meets the plane of the top, and it passed, with `c1`-`c5` all green again. `demo-step` (in `Assets/Tests/`) is the LEAF driver that plays the flow up to a given step for the video; with `pause` > 0 it hides the LEAF overlay and paces the steps for one continuous take.
 
 Not covered by a test: the light-blue hover highlight on the slab, and reachability with the IK interactor (the cards sit 1.4 m away by design, so they are pinched with the far-field ray, not a direct poke).
 
